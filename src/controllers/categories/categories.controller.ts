@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common'
+import { Body, Controller, Get, Param, Post } from '@nestjs/common'
 
 interface products {
   id: string
@@ -13,5 +13,13 @@ export class CategoriesController {
   @Get(':category/products/:id')
   getCategory(@Param() params: products) {
     return `El id a consultar es ${params.id} y su categoría es ${params.category} `
+  }
+  // Crear categoría
+  @Post()
+  create(@Body() payload: any) {
+    return {
+      message: 'Acción de crear categoría',
+      payload
+    }
   }
 }
